@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Acquista "Stella della Libertà"</title>
+    <style>
+        body {
+            background-color: #0c2340;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #002855;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #ffd700;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .book-cover {
+            width: 250px;
+            margin: 20px auto;
+        }
+
+        .description {
+            font-size: 20px;
+            margin: 30px 0;
+        }
+
+        .menu-container {
+            display: flex;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        #menu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu li a {
+            text-decoration: none;
+            color: #ffffff;
+            display: block;
+        }
+
+        #menu li a:hover {
+            background-color: #0c2340;
+        }
+
+        /* Stile del pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            color: #000000;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Acquista "Stella della Libertà"</h1>
+        <div class="menu-container">
+            <div class="menu-icon" id="toggleMenu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <img class="book-cover" src="https://www.mondadoristore.it/img/Stella-della-Liberta-M-David/ea979122149789/BL/BL/82/NZO/fef94fd5-d6a7-4412-bc2b-614972f0c326/?tit=Stella+della+Libert%C3%A0&aut=M.+David" alt="Copertina del libro">
+        <p class="description">Acquista ora il mio avvincente libro di fantascienza "Stella della Libertà" e immergiti in un'avventura spaziale epica. Scopri mondi sconosciuti, incontri alieni e vivi emozioni straordinarie!</p>
+        <div class="button-container">
+            <div class="button" id="openPopup">Acquista Ora</div>
+        </div>
+    </main>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">X</span>
+            <h2>Dettagli dell'acquisto</h2>
+            <p>Titolo: "Stella della Libertà"</p>
+            <p>Autore: "David M."</p>
+            <p>Prezzo: "€12,90"</p>
+            <p>Metodo di pagamento:</p>
+            <select id="paymentMethod">
+                <option value="ApplePay">ApplePay</option>
+                <option value="GooglePay">GooglePay</option>
+                <option value="PayPal">PayPal</option>
+                <option value="CreditCard">Carta di Credito</option>
+            </select>
+            <a class="button" id="completePurchase">Concludi l'acquisto</a>
+        </div>
+    </div>
+
+    <script>
+        const openPopup = document.getElementById("openPopup");
+        const closePopup = document.getElementById("closePopup");
+        const popup = document.getElementById("popup");
+        const completePurchase = document.getElementById("completePurchase");
+        const toggleMenu = document.getElementById("toggleMenu");
+        const menu = document.getElementById("menu");
+
+        openPopup.addEventListener("click", () => {
+            popup.style.display = "block";
+        });
+
+        closePopup.addEventListener("click", () => {
+            if (confirm("Sei sicuro di voler annullare l'acquisto?")) {
+                popup.style.display = "none";
+            }
+        });
+
+        completePurchase.addEventListener("click", () => {
+            const selectedPaymentMethod = paymentMethod.value;
+            alert(`Hai scelto di pagare con ${selectedPaymentMethod}. L'acquisto è in elaborazione.`);
+            popup.style.display = "none";
+        });
+
+        toggleMenu.addEventListener("click", () => {
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

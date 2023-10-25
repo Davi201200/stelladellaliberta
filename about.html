@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: #0c2340;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #002855;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #ffd700;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .book-cover {
+            width: 250px;
+            margin: 20px auto;
+        }
+
+        .description {
+            font-size: 20px;
+            margin: 30px 0;
+        }
+
+        .menu-container {
+            display: flex;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        #menu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu li a {
+            text-decoration: none;
+            color: #ffffff;
+            display: block;
+        }
+
+        #menu li a:hover {
+            background-color: #0c2340;
+        }
+
+        /* Stile del pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            color: #000000;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About us</h1>
+        <div class="menu-container">
+            <div class="menu-icon" id="toggleMenu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            <h2>Our Story</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor euismod purus, id tristique libero cursus non.</p>
+
+            <h2>Our Team</h2>
+            <p>We have a dedicated team of professionals who are passionate about our mission.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions or inquiries, please feel free to <a href="contact.html">contact us</a>.</p>
+        </div>
+
+        <button id="backButton">Indietro</button>
+    </main>
+
+    <script>
+        const backButton = document.getElementById("backButton");
+
+        backButton.addEventListener("click", () => {
+            // Reindirizza l'utente al file "index.html"
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
