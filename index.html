@@ -19,6 +19,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100px; /* Imposta l'altezza desiderata, ad esempio 100px */
         }
 
         h1 {
@@ -103,6 +104,10 @@
             background-color: #0c2340;
         }
 
+        #purchaseCount {
+        display: none; /* Nascondi il paragrafo */
+        }
+
         /* Stile del pop-up */
         .popup {
             display: none;
@@ -146,7 +151,7 @@
             <ul id="menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#">Books</a></li>
+                <li><a href="books.html">Books</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
@@ -157,6 +162,7 @@
         <div class="button-container">
             <div class="button" id="openPopup">Acquista Ora</div>
         </div>
+    <p id="purchaseCount">Acquisti effettuati: 0</p>
     </main>
     <div class="popup" id="popup">
         <div class="popup-content">
@@ -177,6 +183,8 @@
     </div>
 
     <script>
+        var clickCount = 0;  // Variabile globale per il conteggio
+
         const openPopup = document.getElementById("openPopup");
         const closePopup = document.getElementById("closePopup");
         const popup = document.getElementById("popup");
@@ -195,10 +203,18 @@
         });
 
         completePurchase.addEventListener("click", () => {
-            const selectedPaymentMethod = paymentMethod.value;
+            const selectedPaymentMethod = document.getElementById("paymentMethod").value;
             alert(`Hai scelto di pagare con ${selectedPaymentMethod}. L'acquisto è in elaborazione.`);
+
+            // Incrementa il conteggio dei click e salvalo nell'archiviazione locale
+            clickCount++;
+            localStorage.setItem("clickCount", clickCount);
+
+            document.getElementById("purchaseCount").textContent = `Acquisti effettuati: ${clickCount}`;
+
             popup.style.display = "none";
         });
+
 
         toggleMenu.addEventListener("click", () => {
             if (menu.style.display === "block") {
@@ -207,6 +223,10 @@
                 menu.style.display = "block";
             }
         });
+
+        // Recupera il conteggio dalla memoria locale all'avvio della pagina
+        clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
+        document.getElementById("purchaseCount").textContent = `Acquisti effettuati: ${clickCount}`;
     </script>
 </body>
 </html>
